@@ -4,8 +4,7 @@ interface Props {
   authors: string[];
   venue: string;
   arxiv: string;
-  teaser: string;
-  tldr: string;
+  hook: string;
   role: string;
   links?: Record<string, string>;
   selfName?: string;
@@ -16,8 +15,7 @@ const {
   authors,
   venue,
   arxiv,
-  teaser,
-  tldr,
+  hook,
   role,
   links = {},
   selfName = "Zhuchenyang Liu",
@@ -25,23 +23,20 @@ const {
 ---
 
 <article class="paper-card">
-  <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" class="teaser-link">
-    <img src={teaser} alt={title} class="teaser" loading="lazy" />
-  </a>
-  <div class="paper-info">
-    <h3 class="paper-title">
-      <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank">{title}</a>
-    </h3>
-    <p class="authors">
-      {authors.map((author, i) => (
-        <>
-          {i > 0 && ", "}
-          {author === selfName ? <strong>{author}</strong> : <span>{author}</span>}
-        </>
-      ))}
-    </p>
-    <p class="venue">{venue}</p>
-    <p class="tldr">{tldr}</p>
+  <p class="hook">{hook}</p>
+  <h3 class="paper-title">
+    <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank">{title}</a>
+  </h3>
+  <p class="authors">
+    {authors.map((author, i) => (
+      <>
+        {i > 0 && ", "}
+        {author === selfName ? <strong>{author}</strong> : <span>{author}</span>}
+      </>
+    ))}
+  </p>
+  <div class="paper-meta">
+    <span class="venue">{venue}</span>
     <div class="paper-links">
       <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" class="link-pill">arXiv</a>
       <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" class="link-pill">PDF</a>
@@ -54,10 +49,7 @@ const {
 
 <style>
   .paper-card {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 1.25rem;
-    padding: 1.25rem;
+    padding: 1.25rem 1.5rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -69,30 +61,20 @@ const {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   }
 
-  .teaser-link {
-    display: block;
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--tag-bg);
-  }
-
-  .teaser {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    transition: transform 0.3s;
-  }
-
-  .teaser-link:hover .teaser {
-    transform: scale(1.02);
+  .hook {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    font-style: italic;
   }
 
   .paper-title {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
   }
 
   .paper-title a {
@@ -106,22 +88,21 @@ const {
   .authors {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
     line-height: 1.5;
+  }
+
+  .paper-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
   .venue {
     font-size: 0.8rem;
     color: var(--text-tertiary);
-    margin-bottom: 0.5rem;
     font-style: italic;
-  }
-
-  .tldr {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 0.6rem;
   }
 
   .paper-links {
@@ -145,14 +126,5 @@ const {
     background: var(--tag-first);
     color: var(--tag-first-text);
     border-color: var(--tag-first);
-  }
-
-  @media (max-width: 640px) {
-    .paper-card {
-      grid-template-columns: 1fr;
-    }
-    .teaser {
-      max-height: 200px;
-    }
   }
 </style>

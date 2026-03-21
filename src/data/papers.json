@@ -6,8 +6,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2603.12824",
-    "teaser": "/images/papers/nanovdr.png",
-    "tldr": "Distills a 2B VLM retriever into a 69M text-only encoder that retains 95% quality with 50x lower latency for visual document retrieval.",
+    "hook": "What if your query encoder didn't need to see at all? 2B \u2192 70M, 95% quality, 50\u00d7 faster.",
     "topic": "retrieval",
     "role": "first",
     "links": {
@@ -21,8 +20,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2601.20107",
-    "teaser": "/images/papers/sap.png",
-    "tldr": "A training-free pruning method that identifies key visual patches from middle layers, achieving over 90% index reduction while maintaining retrieval fidelity.",
+    "hook": "Everyone looks at the last layer. We looked in the middle \u2014 and pruned 90% of index vectors without losing retrieval quality.",
     "topic": "retrieval",
     "role": "first",
     "links": {}
@@ -34,8 +32,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2603.13575",
-    "teaser": "/images/papers/etextile.png",
-    "tldr": "Investigates how LLMs can assist human designers in optimizing flex sensor placement on e-textiles for motion capture.",
+    "hook": "Can an LLM tell you where to sew a sensor onto a shirt? Turns out, it depends on who's asking.",
     "topic": "motion",
     "role": "first",
     "links": {}
@@ -47,8 +44,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2603.09930",
-    "teaser": "/images/papers/motion_retrieval.png",
-    "tldr": "An interpretable motion representation using joint-angle pseudo-images with token-wise late interaction for fine-grained text-motion retrieval.",
+    "hook": "Turn a 3D skeleton into a pseudo-image, then retrieve it like a document \u2014 with token-level explainability.",
     "topic": "motion",
     "role": "second",
     "links": {}
@@ -60,8 +56,7 @@
     "venue": "PerCom 2026 WiP",
     "year": 2026,
     "arxiv": "2603.13578",
-    "teaser": "/images/papers/lingomotion.png",
-    "tldr": "A hierarchical motion language inspired by natural language structure for interpretable and unambiguous symbolic motion representation.",
+    "hook": "What if human motion had its own alphabet, words, and grammar \u2014 just like natural language?",
     "topic": "motion",
     "role": "second",
     "links": {}
