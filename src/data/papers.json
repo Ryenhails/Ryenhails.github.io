@@ -1,0 +1,69 @@
+[
+  {
+    "id": "nanovdr",
+    "title": "NanoVDR: Distilling a 2B Vision-Language Retriever into a 70M Text-Only Encoder for Visual Document Retrieval",
+    "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, 2026",
+    "year": 2026,
+    "arxiv": "2603.12824",
+    "teaser": "/images/papers/nanovdr.png",
+    "tldr": "Distills a 2B VLM retriever into a 69M text-only encoder that retains 95% quality with 50x lower latency for visual document retrieval.",
+    "topic": "retrieval",
+    "role": "first",
+    "links": {
+      "huggingface": "https://huggingface.co/nanovdr/NanoVDR-S-Multi"
+    }
+  },
+  {
+    "id": "sap",
+    "title": "Look in the Middle: Structural Anchor Pruning for Scalable Visual RAG Indexing",
+    "authors": ["Zhuchenyang Liu", "Ziyu Hu", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, 2026",
+    "year": 2026,
+    "arxiv": "2601.20107",
+    "teaser": "/images/papers/sap.png",
+    "tldr": "A training-free pruning method that identifies key visual patches from middle layers, achieving over 90% index reduction while maintaining retrieval fidelity.",
+    "topic": "retrieval",
+    "role": "first",
+    "links": {}
+  },
+  {
+    "id": "etextile",
+    "title": "Exploring Human-AI Collaboration in E-Textile Design: A Case Study on Flex Sensor Placement for Shoulder Motion Detection",
+    "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yalan He", "Hilla Paasio", "Changyi Li", "Guna Semjonova", "Yu Xiao"],
+    "venue": "Preprint, 2026",
+    "year": 2026,
+    "arxiv": "2603.13575",
+    "teaser": "/images/papers/etextile.png",
+    "tldr": "Investigates how LLMs can assist human designers in optimizing flex sensor placement on e-textiles for motion capture.",
+    "topic": "motion",
+    "role": "first",
+    "links": {}
+  },
+  {
+    "id": "motion-retrieval",
+    "title": "Fine-grained Motion Retrieval via Joint-Angle Motion Images and Token-Patch Late Interaction",
+    "authors": ["Yao Zhang", "Zhuchenyang Liu", "Yanlan He", "Thomas Ploetz", "Yu Xiao"],
+    "venue": "ECCV 2026 (submitted)",
+    "year": 2026,
+    "arxiv": "2603.09930",
+    "teaser": "/images/papers/motion_retrieval.png",
+    "tldr": "An interpretable motion representation using joint-angle pseudo-images with token-wise late interaction for fine-grained text-motion retrieval.",
+    "topic": "motion",
+    "role": "second",
+    "links": {}
+  },
+  {
+    "id": "lingomotion",
+    "title": "LingoMotion: An Interpretable and Unambiguous Symbolic Representation for Human Motion",
+    "authors": ["Yao Zhang", "Zhuchenyang Liu", "Yu Xiao"],
+    "venue": "Preprint, 2026",
+    "year": 2026,
+    "arxiv": "2603.13578",
+    "teaser": "/images/papers/lingomotion.png",
+    "tldr": "A hierarchical motion language inspired by natural language structure for interpretable and unambiguous symbolic motion representation.",
+    "topic": "motion",
+    "role": "second",
+    "links": {}
+  }
+]

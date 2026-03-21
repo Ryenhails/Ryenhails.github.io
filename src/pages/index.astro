@@ -1,0 +1,88 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import PaperCard from "../components/PaperCard.astro";
+import papers from "../data/papers.json";
+
+const retrieval = papers.filter((p) => p.topic === "retrieval");
+const motion = papers.filter((p) => p.topic === "motion");
+---
+
+<Base title="Zhuchenyang Liu">
+  <Header />
+
+  <main>
+    <section>
+      <h2 class="section-title">Vision-Language Retrieval</h2>
+      <div class="paper-list">
+        {retrieval.map((p) => (
+          <PaperCard
+            title={p.title}
+            authors={p.authors}
+            venue={p.venue}
+            arxiv={p.arxiv}
+            teaser={p.teaser}
+            tldr={p.tldr}
+            role={p.role}
+            links={p.links}
+          />
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Motion Understanding & E-Textile</h2>
+      <div class="paper-list">
+        {motion.map((p) => (
+          <PaperCard
+            title={p.title}
+            authors={p.authors}
+            venue={p.venue}
+            arxiv={p.arxiv}
+            teaser={p.teaser}
+            tldr={p.tldr}
+            role={p.role}
+            links={p.links}
+          />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Zhuchenyang Liu. Built with Astro.</p>
+  </footer>
+</Base>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .paper-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+  }
+</style>

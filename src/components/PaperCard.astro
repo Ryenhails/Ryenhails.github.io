@@ -1,0 +1,158 @@
+---
+interface Props {
+  title: string;
+  authors: string[];
+  venue: string;
+  arxiv: string;
+  teaser: string;
+  tldr: string;
+  role: string;
+  links?: Record<string, string>;
+  selfName?: string;
+}
+
+const {
+  title,
+  authors,
+  venue,
+  arxiv,
+  teaser,
+  tldr,
+  role,
+  links = {},
+  selfName = "Zhuchenyang Liu",
+} = Astro.props;
+---
+
+<article class="paper-card">
+  <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" class="teaser-link">
+    <img src={teaser} alt={title} class="teaser" loading="lazy" />
+  </a>
+  <div class="paper-info">
+    <h3 class="paper-title">
+      <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank">{title}</a>
+    </h3>
+    <p class="authors">
+      {authors.map((author, i) => (
+        <>
+          {i > 0 && ", "}
+          {author === selfName ? <strong>{author}</strong> : <span>{author}</span>}
+        </>
+      ))}
+    </p>
+    <p class="venue">{venue}</p>
+    <p class="tldr">{tldr}</p>
+    <div class="paper-links">
+      <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" class="link-pill">arXiv</a>
+      <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" class="link-pill">PDF</a>
+      {Object.entries(links).map(([label, url]) => (
+        <a href={url} target="_blank" class="link-pill">{label}</a>
+      ))}
+    </div>
+  </div>
+</article>
+
+<style>
+  .paper-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .paper-card:hover {
+    border-color: #d6d3d1;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .teaser-link {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--tag-bg);
+  }
+
+  .teaser {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .teaser-link:hover .teaser {
+    transform: scale(1.02);
+  }
+
+  .paper-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+
+  .paper-title a {
+    color: var(--text);
+  }
+
+  .paper-title a:hover {
+    color: var(--accent);
+  }
+
+  .authors {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+    line-height: 1.5;
+  }
+
+  .venue {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .tldr {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+
+  .paper-links {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .link-pill {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+    text-transform: capitalize;
+  }
+
+  .link-pill:hover {
+    background: var(--tag-first);
+    color: var(--tag-first-text);
+    border-color: var(--tag-first);
+  }
+
+  @media (max-width: 640px) {
+    .paper-card {
+      grid-template-columns: 1fr;
+    }
+    .teaser {
+      max-height: 200px;
+    }
+  }
+</style>
