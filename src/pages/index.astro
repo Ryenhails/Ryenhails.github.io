@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import PaperCard from "../components/PaperCard.astro";
+import News from "../components/News.astro";
 import papers from "../data/papers.json";
 
 const retrieval = papers.filter((p) => p.topic === "retrieval");
@@ -12,6 +13,8 @@ const motion = papers.filter((p) => p.topic === "motion");
   <Header />
 
   <main>
+    <News />
+
     <section>
       <h2 class="section-title">Vision-Language Retrieval</h2>
       <div class="paper-list">

@@ -1,25 +1,34 @@
 ---
 ---
 <header>
-  <h1>Zhuchenyang Liu</h1>
-  <p class="affiliation">1st-year PhD Student, <a href="https://mobilecloud.aalto.fi/" target="_blank">Mobile Cloud Computing Group</a>, Aalto University</p>
+  <div class="header-top">
+    <img src="/images/photo.jpg" alt="Zhuchenyang Liu" class="avatar" />
+    <div class="header-text">
+      <h1>Zhuchenyang Liu</h1>
+      <p class="affiliation">1st-year PhD Student, <a href="https://mobilecloud.aalto.fi/" target="_blank">Mobile Cloud Computing Group</a>, Aalto University</p>
+      <nav>
+        <a href="https://scholar.google.com/citations?user=70LuG5cAAAAJ" target="_blank">Google Scholar</a>
+        <span class="sep">/</span>
+        <a href="https://github.com/Ryenhails" target="_blank">GitHub</a>
+        <span class="sep">/</span>
+        <a href="https://huggingface.co/Ryenhails" target="_blank">HuggingFace</a>
+        <span class="sep">/</span>
+        <a href="https://www.kaggle.com/ryenhails" target="_blank">Kaggle</a>
+        <span class="sep">/</span>
+        <a href="https://www.linkedin.com/in/zhuchenyang-liu-2a6745202/" target="_blank">LinkedIn</a>
+        <span class="sep">/</span>
+        <a href="/cv.pdf" target="_blank">CV</a>
+        <span class="sep">/</span>
+        <a href="mailto:zhuchenyang.liu@aalto.fi">Email</a>
+      </nav>
+    </div>
+  </div>
   <p class="bio">
     I am a first-year doctoral researcher at Aalto University, supervised by Prof. Yu Xiao. My research focuses on cross-modal retrieval and representation, with applications in visual document retrieval, human motion understanding, and e-textile sensing. Previously, I obtained a dual M.Sc. in Data Science from KTH and Aalto (EIT Digital, GPA 4.56/5.0), and interned at ABB Corporate Research working on knowledge graph-enhanced RAG systems. I am also a Kaggle Competitions Master (top 0.5% globally).
   </p>
   <p class="funding">
-    My work is supported by the <a href="https://www.businessfinland.fi/" target="_blank">Business Finland</a> co-innovation programme (AiWo project, 2025–2027), which aims to enhance human-AI collaboration across manufacturing, construction, and industrial design.
+    My work is supported by the <a href="https://www.businessfinland.fi/" target="_blank">Business Finland</a> co-innovation programme (AiWo project, 2025-2027), which aims to enhance human-AI collaboration across manufacturing, construction, and industrial design.
   </p>
-  <nav>
-    <a href="https://scholar.google.com/citations?user=70LuG5cAAAAJ" target="_blank">Google Scholar</a>
-    <span class="sep">/</span>
-    <a href="https://huggingface.co/Ryenhails" target="_blank">HuggingFace</a>
-    <span class="sep">/</span>
-    <a href="https://www.kaggle.com/ryenhails" target="_blank">Kaggle</a>
-    <span class="sep">/</span>
-    <a href="https://www.linkedin.com/in/zhuchenyang-liu-2a6745202/" target="_blank">LinkedIn</a>
-    <span class="sep">/</span>
-    <a href="mailto:zhuchenyang.liu@aalto.fi">Email</a>
-  </nav>
 </header>
 
 <style>
@@ -27,17 +36,39 @@
     margin-bottom: 4rem;
   }
 
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+  }
+
+  .header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
   h1 {
     font-size: 1.75rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
   }
 
   .affiliation {
     color: var(--text-secondary);
     font-size: 0.95rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .bio {
@@ -52,7 +83,7 @@
     color: var(--text-tertiary);
     font-size: 0.85rem;
     max-width: 640px;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     line-height: 1.5;
   }
 
@@ -67,5 +98,16 @@
   .sep {
     color: var(--text-tertiary);
     user-select: none;
+  }
+
+  @media (max-width: 480px) {
+    .header-top {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    nav {
+      justify-content: center;
+    }
   }
 </style>

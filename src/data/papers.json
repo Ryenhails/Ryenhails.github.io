@@ -10,7 +10,7 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
-      "huggingface": "https://huggingface.co/nanovdr/NanoVDR-S-Multi"
+      "huggingface": "https://huggingface.co/nanovdr"
     }
   },
   {
@@ -23,7 +23,9 @@
     "hook": "Everyone looks at the last layer. We looked in the middle \u2014 and pruned 90% of index vectors without losing retrieval quality.",
     "topic": "retrieval",
     "role": "first",
-    "links": {}
+    "links": {
+      "github": "https://github.com/Ryenhails/structural-anchor-pruning"
+    }
   },
   {
     "id": "etextile",

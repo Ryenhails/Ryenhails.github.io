@@ -1,0 +1,62 @@
+---
+const news = [
+  {
+    date: "Mar 2026",
+    text: 'NanoVDR is now on <a href="https://huggingface.co/nanovdr" target="_blank">HuggingFace</a> — full datasets, models, and an online demo.',
+  },
+  {
+    date: "Oct 2025",
+    text: 'Academic visit to <a href="https://www.tum.de/" target="_blank">TUM</a> and <a href="https://www.lmu.de/" target="_blank">LMU Munich</a>.',
+  },
+];
+---
+
+<section>
+  <h2 class="section-title">News</h2>
+  <ul class="news-list">
+    {news.map((item) => (
+      <li class="news-item">
+        <span class="news-date">{item.date}</span>
+        <span class="news-text" set:html={item.text} />
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .news-item {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .news-date {
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    min-width: 5rem;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .news-text {
+    color: var(--text-secondary);
+  }
+</style>
