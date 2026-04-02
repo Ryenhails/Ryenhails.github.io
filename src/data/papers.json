@@ -1,5 +1,21 @@
 [
   {
+    "id": "ikea-bench",
+    "title": "IKEA-Bench: Benchmarking and Mechanistic Analysis of Vision-Language Models for Cross-Depiction Assembly Instruction Alignment",
+    "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2604.00913",
+    "hook": "Can VLMs match a diagram to a real video of someone building a shelf? 19 models, 1,623 questions \u2014 architecture matters more than size.",
+    "topic": "understanding",
+    "role": "first",
+    "links": {
+      "project": "https://ryenhails.github.io/IKEA-Bench/",
+      "github": "https://github.com/Ryenhails/IKEA-Bench",
+      "huggingface": "https://huggingface.co/datasets/Ryenhails/ikea-bench"
+    }
+  },
+  {
     "id": "nanovdr",
     "title": "NanoVDR: Distilling a 2B Vision-Language Retriever into a 70M Text-Only Encoder for Visual Document Retrieval",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],

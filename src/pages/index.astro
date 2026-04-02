@@ -5,6 +5,7 @@ import PaperCard from "../components/PaperCard.astro";
 import News from "../components/News.astro";
 import papers from "../data/papers.json";
 
+const understanding = papers.filter((p) => p.topic === "understanding");
 const retrieval = papers.filter((p) => p.topic === "retrieval");
 const motion = papers.filter((p) => p.topic === "motion");
 ---
@@ -14,6 +15,23 @@ const motion = papers.filter((p) => p.topic === "motion");
 
   <main>
     <News />
+
+    <section>
+      <h2 class="section-title">Cross-Modality Understanding</h2>
+      <div class="paper-list">
+        {understanding.map((p) => (
+          <PaperCard
+            title={p.title}
+            authors={p.authors}
+            venue={p.venue}
+            arxiv={p.arxiv}
+            hook={p.hook}
+            role={p.role}
+            links={p.links}
+          />
+        ))}
+      </div>
+    </section>
 
     <section>
       <h2 class="section-title">Vision-Language Retrieval</h2>
