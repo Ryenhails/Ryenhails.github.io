@@ -47,7 +47,7 @@
     "id": "etextile",
     "title": "Exploring Human-AI Collaboration in E-Textile Design: A Case Study on Flex Sensor Placement for Shoulder Motion Detection",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yalan He", "Hilla Paasio", "Changyi Li", "Guna Semjonova", "Yu Xiao"],
-    "venue": "Preprint, Under Review",
+    "venue": "Proceedings of the ACM on Human-Computer Interaction, 2026",
     "year": 2026,
     "arxiv": "2603.13575",
     "hook": "Can an LLM tell you where to sew a sensor onto a shirt? Turns out, it depends on who's asking.",
