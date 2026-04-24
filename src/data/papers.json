@@ -56,6 +56,23 @@
     "links": {}
   },
   {
+    "id": "motion-smd",
+    "title": "Encoder-Free Human Motion Understanding via Structured Motion Descriptions",
+    "authors": ["Yao Zhang", "Zhuchenyang Liu", "Thomas Ploetz", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2604.21668",
+    "hook": "What if motion didn't need an encoder at all? Just describe it in words — and let the LLM reason.",
+    "topic": "motion",
+    "role": "second",
+    "links": {
+      "project": "https://yaozhang182.github.io/motion-smd/",
+      "github": "https://github.com/yaozhang182/motion-smd",
+      "data": "https://huggingface.co/datasets/zyyy12138/motion-smd-data",
+      "model": "https://huggingface.co/zyyy12138/motion-smd-lora"
+    }
+  },
+  {
     "id": "motion-retrieval",
     "title": "Fine-grained Motion Retrieval via Joint-Angle Motion Images and Token-Patch Late Interaction",
     "authors": ["Yao Zhang", "Zhuchenyang Liu", "Yanlan He", "Thomas Ploetz", "Yu Xiao"],
