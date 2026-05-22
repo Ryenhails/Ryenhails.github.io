@@ -31,12 +31,12 @@
   },
   {
     "id": "sap",
-    "title": "Look in the Middle: Structural Anchor Pruning for Scalable Visual RAG Indexing",
+    "title": "Structural Anchor Pruning: Training-Free Multi-Vector Compression for Visual Document Retrieval",
     "authors": ["Zhuchenyang Liu", "Ziyu Hu", "Yao Zhang", "Yu Xiao"],
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2601.20107",
-    "hook": "Everyone looks at the last layer. We looked in the middle \u2014 and pruned 90% of index vectors without losing retrieval quality.",
+    "hook": "Where does a document's structure actually live in a VLM? Wherever it is, SAP finds it \u2014 and prunes 90% of multi-vector indexes, training-free.",
     "topic": "retrieval",
     "role": "first",
     "links": {
