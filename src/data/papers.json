@@ -6,7 +6,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2604.00913",
-    "hook": "Can VLMs match a diagram to a real video of someone building a shelf? 19 models, 1,623 questions \u2014 architecture matters more than size.",
+    "hook": "Can a VLM match an abstract IKEA diagram to a video of the real build? Text is a double-edged sword \u2014 it recovers instruction understanding but silently breaks diagram-to-video alignment, and scaling up won't help: the visual encoder is the real bottleneck.",
     "topic": "understanding",
     "role": "first",
     "links": {
@@ -53,7 +53,9 @@
     "hook": "Does LLM-assisted design always help humans? Junior designers gain from human-AI collaboration; experienced ones regress.",
     "topic": "motion",
     "role": "first",
-    "links": {}
+    "links": {
+      "ACM": "https://dl.acm.org/doi/10.1145/3816771"
+    }
   },
   {
     "id": "motion-smd",
