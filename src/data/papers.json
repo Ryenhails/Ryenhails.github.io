@@ -9,7 +9,9 @@
     "hook": "With a language-cue interface, we find the grounding bottleneck is the coordinate output, not the model's ability to locate the evidence.",
     "topic": "understanding",
     "role": "first",
-    "links": {}
+    "links": {
+      "github": "https://github.com/Ryenhails/quote-and-retrieve"
+    }
   },
   {
     "id": "ikea-bench",
