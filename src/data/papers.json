@@ -6,7 +6,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2607.24651",
-    "hook": "Instead of predicting bounding box coordinates, the model quotes its evidence in words, and a retriever finds where each quote sits on the page. Evidence recall rises from under 8% to about 47%, attribution hallucination roughly halves, and no region labels are needed.",
+    "hook": "With a language-cue interface, we find the grounding bottleneck is the coordinate output, not the model's ability to locate the evidence.",
     "topic": "understanding",
     "role": "first",
     "links": {}
