@@ -99,22 +99,26 @@
     list-style: none;
     margin: 0 0 0.75rem 0;
     padding: 0;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.7;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     max-width: 640px;
   }
 
   .interests li {
-    padding-left: 1rem;
-    position: relative;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    transition: all 0.15s;
   }
 
-  .interests li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--text-tertiary);
+  .interests li:hover {
+    background: var(--tag-first);
+    color: var(--tag-first-text);
+    border-color: var(--tag-first);
   }
 
   .funding {
