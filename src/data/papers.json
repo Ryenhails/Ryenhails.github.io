@@ -1,5 +1,17 @@
 [
   {
+    "id": "evidence-attribution",
+    "title": "Evidence Attribution in Visual Document Understanding without Coordinates or Region Labels",
+    "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2607.24651",
+    "hook": "Instead of predicting bounding box coordinates, the model quotes its evidence in words, and a retriever finds where each quote sits on the page. Evidence recall rises from under 8% to about 47%, attribution hallucination roughly halves, and no region labels are needed.",
+    "topic": "understanding",
+    "role": "first",
+    "links": {}
+  },
+  {
     "id": "ikea-bench",
     "title": "IKEA-Bench: Benchmarking and Mechanistic Analysis of Vision-Language Models for Cross-Depiction Assembly Instruction Alignment",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
