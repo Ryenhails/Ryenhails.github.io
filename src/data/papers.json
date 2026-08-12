@@ -40,6 +40,22 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "github": "https://github.com/Ryenhails/NanoVDR",
+      "huggingface": "https://huggingface.co/nanovdr"
+    }
+  },
+  {
+    "id": "distilvdr",
+    "title": "DistilVDR: A Compact End-to-End Visual Document Retriever via Dual-Student Distillation",
+    "authors": ["Zhuchenyang Liu", "Ziyi Wang", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2608.10636",
+    "hook": "NanoVDR shrank only the query encoder. DistilVDR distills the whole retriever end-to-end from a single 8B teacher, keeping most of its quality at 524M with a 15x smaller index.",
+    "topic": "retrieval",
+    "role": "first",
+    "links": {
+      "github": "https://github.com/Ryenhails/NanoVDR",
       "huggingface": "https://huggingface.co/nanovdr"
     }
   },
