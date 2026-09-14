@@ -20,7 +20,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2604.00913",
-    "hook": "Can a VLM match an abstract IKEA diagram to a video of the real build? Text is a double-edged sword \u2014 it recovers instruction understanding but silently breaks diagram-to-video alignment, and scaling up won't help: the visual encoder is the real bottleneck.",
+    "hook": "Can a VLM match an abstract IKEA diagram to a video of the real build? Text is a double-edged sword — it recovers instruction understanding but silently breaks diagram-to-video alignment, and scaling up won't help: the visual encoder is the real bottleneck.",
     "topic": "understanding",
     "role": "first",
     "links": {
@@ -36,7 +36,7 @@
     "venue": "EMNLP 2026 (Main)",
     "year": 2026,
     "arxiv": "2603.12824",
-    "hook": "What if your query encoder didn't need to see at all? 2B \u2192 70M, 95% quality, 50\u00d7 faster.",
+    "hook": "What if your query encoder didn't need to see at all? 2B → 70M, 95% quality, 50× faster.",
     "topic": "retrieval",
     "role": "first",
     "links": {
@@ -48,7 +48,7 @@
     "id": "distilvdr",
     "title": "DistilVDR: A Compact End-to-End Visual Document Retriever via Dual-Student Distillation",
     "authors": ["Zhuchenyang Liu", "Ziyi Wang", "Yao Zhang", "Yu Xiao"],
-    "venue": "Preprint, Under Review",
+    "venue": "DocInsights Workshop @ EMNLP 2026",
     "year": 2026,
     "arxiv": "2608.10636",
     "hook": "NanoVDR shrank only the query encoder. DistilVDR distills the whole retriever end-to-end from a single 8B teacher, keeping most of its quality at 524M with a 15x smaller index.",
@@ -66,7 +66,7 @@
     "venue": "EMNLP 2026 (Main)",
     "year": 2026,
     "arxiv": "2601.20107",
-    "hook": "Where does a document's structure actually live in a VLM? Wherever it is, SAP finds it \u2014 and prunes 90% of multi-vector indexes, training-free.",
+    "hook": "Where does a document's structure actually live in a VLM? Wherever it is, SAP finds it — and prunes 90% of multi-vector indexes, training-free.",
     "topic": "retrieval",
     "role": "first",
     "links": {
@@ -111,7 +111,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2603.09930",
-    "hook": "Turn a 3D skeleton into a pseudo-image, then retrieve it like a document \u2014 with token-level explainability.",
+    "hook": "Turn a 3D skeleton into a pseudo-image, then retrieve it like a document — with token-level explainability.",
     "topic": "motion",
     "role": "second",
     "links": {}
@@ -123,7 +123,7 @@
     "venue": "IEEE International Conference on Pervasive Computing and Communications (PerCom) Work-in-Progress, 2026",
     "year": 2026,
     "arxiv": "2603.13578",
-    "hook": "What if human motion had its own alphabet, words, and grammar \u2014 just like natural language?",
+    "hook": "What if human motion had its own alphabet, words, and grammar — just like natural language?",
     "topic": "motion",
     "role": "second",
     "links": {}
