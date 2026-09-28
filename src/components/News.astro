@@ -33,18 +33,35 @@ const news = [
     text: 'Academic visit to <a href="https://www.tum.de/" target="_blank">TUM</a> and <a href="https://www.lmu.de/" target="_blank">LMU Munich</a>.',
   },
 ];
+
+const RECENT = 4;
+const recent = news.slice(0, RECENT);
+const older = news.slice(RECENT);
 ---
 
 <section>
   <h2 class="section-title">News</h2>
   <ul class="news-list">
-    {news.map((item) => (
+    {recent.map((item) => (
       <li class="news-item">
         <span class="news-date">{item.date}</span>
         <span class="news-text" set:html={item.text} />
       </li>
     ))}
   </ul>
+  {older.length > 0 && (
+    <details class="older-news">
+      <summary>Earlier news ({older.length})</summary>
+      <ul class="news-list">
+        {older.map((item) => (
+          <li class="news-item">
+            <span class="news-date">{item.date}</span>
+            <span class="news-text" set:html={item.text} />
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
 </section>
 
 <style>
@@ -82,5 +99,41 @@ const news = [
 
   .news-text {
     color: var(--text-secondary);
+  }
+
+  .older-news {
+    margin-top: 0.75rem;
+  }
+
+  .older-news summary {
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.15s;
+  }
+
+  .older-news summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .older-news summary::before {
+    content: "+";
+    font-variant-numeric: tabular-nums;
+  }
+
+  .older-news[open] summary::before {
+    content: "\2212";
+  }
+
+  .older-news summary:hover {
+    color: var(--accent);
+  }
+
+  .older-news .news-list {
+    margin-top: 0.6rem;
   }
 </style>

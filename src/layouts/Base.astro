@@ -1,8 +1,15 @@
 ---
 interface Props {
   title?: string;
+  description?: string;
 }
-const { title = "Zhuchenyang Liu" } = Astro.props;
+const {
+  title = "Zhuchenyang Liu",
+  description = "Doctoral researcher at Aalto University working on efficient visual document retrieval: vision-language models, knowledge distillation and index compression.",
+} = Astro.props;
+
+const site = "https://ryenhails.github.io";
+const ogImage = `${site}/images/photo.jpg`;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +17,24 @@ const { title = "Zhuchenyang Liu" } = Astro.props;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={`${site}/`} />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f0f0e" media="(prefers-color-scheme: dark)" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={`${site}/`} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
@@ -47,6 +72,22 @@ const { title = "Zhuchenyang Liu" } = Astro.props;
     --font-mono: 'JetBrains Mono', monospace;
   }
 
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f0e;
+      --bg-card: #1a1917;
+      --text: #f5f5f4;
+      --text-secondary: #b3aca5;
+      --text-tertiary: #7d756d;
+      --accent: #7cb0f5;
+      --accent-hover: #a8cbff;
+      --border: #2b2724;
+      --tag-bg: #232020;
+      --tag-first: #1e3557;
+      --tag-first-text: #bfdbfe;
+    }
+  }
+
   html {
     font-family: var(--font);
     background: var(--bg);
@@ -72,6 +113,7 @@ const { title = "Zhuchenyang Liu" } = Astro.props;
   }
 
   ::selection {
-    background: #dbeafe;
+    background: var(--tag-first);
+    color: var(--tag-first-text);
   }
 </style>

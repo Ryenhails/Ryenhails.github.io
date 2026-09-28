@@ -5,7 +5,6 @@ interface Props {
   venue: string;
   arxiv: string;
   hook: string;
-  role: string;
   links?: Record<string, string>;
   selfName?: string;
 }
@@ -16,16 +15,17 @@ const {
   venue,
   arxiv,
   hook,
-  role,
   links = {},
   selfName = "Zhuchenyang Liu",
 } = Astro.props;
+
+const isPreprint = /preprint|under review|submitted/i.test(venue);
 ---
 
 <article class="paper-card">
   <p class="hook">{hook}</p>
   <h3 class="paper-title">
-    <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank">{title}</a>
+    <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer">{title}</a>
   </h3>
   <p class="authors">
     {authors.map((author, i) => (
@@ -36,12 +36,12 @@ const {
     ))}
   </p>
   <div class="paper-meta">
-    <span class="venue">{venue}</span>
+    <span class={isPreprint ? "venue" : "venue venue-accepted"}>{venue}</span>
     <div class="paper-links">
-      <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" class="link-pill">arXiv</a>
-      <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" class="link-pill">PDF</a>
+      <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">arXiv</a>
+      <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">PDF</a>
       {Object.entries(links).map(([label, url]) => (
-        <a href={url} target="_blank" class="link-pill">{label}</a>
+        <a href={url} target="_blank" rel="noopener noreferrer" class="link-pill">{label}</a>
       ))}
     </div>
   </div>
@@ -57,7 +57,7 @@ const {
   }
 
   .paper-card:hover {
-    border-color: #d6d3d1;
+    border-color: var(--text-tertiary);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   }
 
@@ -103,6 +103,17 @@ const {
     font-size: 0.8rem;
     color: var(--text-tertiary);
     font-style: italic;
+  }
+
+  .venue-accepted {
+    font-style: normal;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--tag-first-text);
+    background: var(--tag-first);
+    border-radius: 100px;
+    padding: 0.18rem 0.6rem;
+    letter-spacing: -0.01em;
   }
 
   .paper-links {

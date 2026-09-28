@@ -20,7 +20,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2604.00913",
-    "hook": "Can a VLM match an abstract IKEA diagram to a video of the real build? Text is a double-edged sword — it recovers instruction understanding but silently breaks diagram-to-video alignment, and scaling up won't help: the visual encoder is the real bottleneck.",
+    "hook": "Adding text recovers instruction understanding but breaks diagram-to-video alignment. Scaling up does not help, because the bottleneck is the visual encoder.",
     "topic": "understanding",
     "role": "first",
     "links": {
@@ -36,7 +36,7 @@
     "venue": "EMNLP 2026 (Main)",
     "year": 2026,
     "arxiv": "2603.12824",
-    "hook": "What if your query encoder didn't need to see at all? 2B → 70M, 95% quality, 50× faster.",
+    "hook": "The query encoder does not need to see. A 70M text-only student keeps 95% of a 2B teacher's quality at 50x lower CPU latency.",
     "topic": "retrieval",
     "role": "first",
     "links": {
@@ -66,7 +66,7 @@
     "venue": "EMNLP 2026 (Main)",
     "year": 2026,
     "arxiv": "2601.20107",
-    "hook": "Where does a document's structure actually live in a VLM? Wherever it is, SAP finds it — and prunes 90% of multi-vector indexes, training-free.",
+    "hook": "A document's structure lives in the middle layers, not the final one. Pruning by that signal removes over 90% of the index without any training.",
     "topic": "retrieval",
     "role": "first",
     "links": {
@@ -80,7 +80,7 @@
     "venue": "Proceedings of the ACM on Human-Computer Interaction, 2026",
     "year": 2026,
     "arxiv": "2603.13575",
-    "hook": "Does LLM-assisted design always help humans? Junior designers gain from human-AI collaboration; experienced ones regress.",
+    "hook": "LLM-assisted design does not help everyone equally. The least experienced designer improved through collaboration, the most experienced one regressed.",
     "topic": "motion",
     "role": "first",
     "links": {
@@ -94,7 +94,7 @@
     "venue": "Preprint, Under Review",
     "year": 2026,
     "arxiv": "2604.21668",
-    "hook": "What if motion didn't need an encoder at all? Just describe it in words — and let the LLM reason.",
+    "hook": "Human motion does not need an encoder. Describe it in structured words and let the LLM do the reasoning.",
     "topic": "motion",
     "role": "second",
     "links": {
@@ -111,7 +111,7 @@
     "venue": "ACCV 2026",
     "year": 2026,
     "arxiv": "2603.09930",
-    "hook": "Turn a 3D skeleton into a pseudo-image, then retrieve it like a document — with token-level explainability.",
+    "hook": "A 3D skeleton becomes a pseudo-image, so motion can be retrieved like a document, with token-level explainability.",
     "topic": "motion",
     "role": "second",
     "links": {}
@@ -123,7 +123,7 @@
     "venue": "IEEE International Conference on Pervasive Computing and Communications (PerCom) Work-in-Progress, 2026",
     "year": 2026,
     "arxiv": "2603.13578",
-    "hook": "What if human motion had its own alphabet, words, and grammar — just like natural language?",
+    "hook": "Human motion gets its own alphabet, words and grammar, so the representation stays interpretable and unambiguous.",
     "topic": "motion",
     "role": "second",
     "links": {}
