@@ -45,6 +45,22 @@
     }
   },
   {
+    "id": "colnanovdr",
+    "title": "ColNanoVDR: Document-Free Query Distillation for Multi-Vector Visual Document Retrieval via Optimal Transport",
+    "authors": ["Zhuchenyang Liu", "Ziyi Wang", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2609.34899",
+    "hook": "Multi-vector distillation does not need documents at all. Optimal transport aligns student and teacher query tokens, keeping 95% of teacher quality at 26x faster encoding.",
+    "topic": "retrieval",
+    "role": "first",
+    "links": {
+      "github": "https://github.com/Ryenhails/NanoVDR",
+      "demo": "https://huggingface.co/spaces/nanovdr/NanoVDR-Demo",
+      "model": "https://huggingface.co/nanovdr"
+    }
+  },
+  {
     "id": "distilvdr",
     "title": "DistilVDR: A Compact End-to-End Visual Document Retriever via Dual-Student Distillation",
     "authors": ["Zhuchenyang Liu", "Ziyi Wang", "Yao Zhang", "Yu Xiao"],
