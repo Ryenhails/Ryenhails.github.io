@@ -23,8 +23,13 @@
     </div>
   </div>
   <p class="bio">
-    I am a doctoral researcher at Aalto University, supervised by Prof. Yu Xiao. My research interests include:
+    I am a doctoral researcher at Aalto University, supervised by Prof. Yu Xiao, working on making
+    vision-language document retrieval efficient enough to deploy. Previously I obtained a dual
+    M.Sc. in Data Science from KTH and Aalto (EIT Digital, GPA 4.56/5.0) and interned at ABB
+    Corporate Research on knowledge graph-enhanced RAG. I am also a Kaggle Competitions Master
+    (top 0.5% globally), and always open to collaboration.
   </p>
+  <p class="interests-label">Research interests</p>
   <ul class="interests">
     <li>Large Language Models</li>
     <li>Efficient Machine Learning</li>
@@ -32,17 +37,11 @@
     <li>Multimodal Retrieval</li>
     <li>Human-Centered Behavior Understanding</li>
   </ul>
-  <p class="bio">
-    Previously, I obtained a dual M.Sc. in Data Science from KTH and Aalto (EIT Digital, GPA 4.56/5.0), and interned at ABB Corporate Research working on knowledge graph-enhanced RAG systems. I am also a Kaggle Competitions Master (top 0.5% globally). I am always open to collaboration — feel free to reach out!
-  </p>
-  <p class="funding">
-    My work is supported by the <a href="https://www.businessfinland.fi/" target="_blank">Business Finland</a> co-innovation programme (AiWo project, 2025-2027), which aims to enhance human-AI collaboration across manufacturing, construction, and industrial design.
-  </p>
 </header>
 
 <style>
   header {
-    margin-bottom: 4rem;
+    margin-bottom: 3.25rem;
   }
 
   .header-top {
@@ -95,9 +94,17 @@
     line-height: 1.6;
   }
 
+  .interests-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-tertiary);
+    margin: 0 0 0.45rem 0;
+  }
+
   .interests {
     list-style: none;
-    margin: 0 0 0.75rem 0;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
@@ -121,13 +128,6 @@
     border-color: var(--tag-first);
   }
 
-  .funding {
-    color: var(--text-tertiary);
-    font-size: 0.85rem;
-    max-width: 640px;
-    margin-bottom: 0;
-    line-height: 1.5;
-  }
 
   nav {
     display: flex;
