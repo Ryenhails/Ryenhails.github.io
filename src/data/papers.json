@@ -116,6 +116,43 @@
     }
   },
   {
+    "id": "etextiles-mapping",
+    "title": "Mapping E-textiles Design Pain Points and Generative AI Opportunities: Insights from Workshops in Shanghai and Winchester",
+    "authors": ["Zhuchenyang Liu", "Nianchong Qu", "Yao Zhang", "Marie O'Mahony", "Qi Wang", "Yu Xiao"],
+    "venue": "International Conference on the Challenges, Opportunities, Innovations and Applications in Electronic Textiles (E-Textiles) 2026",
+    "year": 2026,
+    "arxiv": "2610.07296",
+    "hook": "Two co-design workshops show the bottleneck in e-textile design is not model capability but the missing machine-readable formats that AI tools would need.",
+    "topic": "motion",
+    "role": "first",
+    "links": {}
+  },
+  {
+    "id": "strengthsense",
+    "title": "StrengthSense: A Dataset of IMU Signals Capturing Everyday Activities with Diverse Physical Demands",
+    "authors": ["Zeyu Yang", "Zhuchenyang Liu", "Yao Zhang", "Clayton Leite", "Yu Xiao"],
+    "venue": "Proceedings of the ACM International Symposium on Wearable Computers (ISWC) 2026",
+    "year": 2026,
+    "hook": "An IMU dataset of everyday activities spanning a wide range of physical demands, for strength-aware activity recognition.",
+    "topic": "motion",
+    "role": "second",
+    "links": {
+      "ACM": "https://dl.acm.org/doi/10.1145/3830727.3834811"
+    }
+  },
+  {
+    "id": "knit-sensors",
+    "title": "Knit-Structure Effects on Electromechanical Metrics and Their Correlation with Joint-Angle Estimation Error in Knitted Strain Sensors",
+    "authors": ["Annika Eloranta", "Zhuchenyang Liu", "Iiro Naulapaa", "Iida Arvola", "Yao Zhang", "Anna-Mari Leppisaari", "Lulu Xu", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2610.07416",
+    "hook": "Knit structure drives gauge factor and baseline resistance, but uniaxial tests only screen out weak designs; joint-specific evaluation is still needed.",
+    "topic": "motion",
+    "role": "second",
+    "links": {}
+  },
+  {
     "id": "motion-smd",
     "title": "Encoder-Free Human Motion Understanding via Structured Motion Descriptions",
     "authors": ["Yao Zhang", "Zhuchenyang Liu", "Thomas Ploetz", "Yu Xiao"],

@@ -3,7 +3,7 @@ interface Props {
   title: string;
   authors: string[];
   venue: string;
-  arxiv: string;
+  arxiv?: string;
   hook: string;
   links?: Record<string, string>;
   selfName?: string;
@@ -22,11 +22,14 @@ const {
 } = Astro.props;
 
 const isPreprint = /preprint|under review|submitted/i.test(venue);
+const linkEntries = Object.entries(links);
+// papers without an arXiv id (e.g. ACM-only) fall back to their first external link
+const titleHref = arxiv ? `https://arxiv.org/abs/${arxiv}` : (linkEntries[0]?.[1] ?? "#");
 ---
 
 <article class={compact ? "paper-card compact" : "paper-card"}>
   <h3 class="paper-title">
-    <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer">{title}</a>
+    <a href={titleHref} target="_blank" rel="noopener noreferrer">{title}</a>
   </h3>
 
   {!compact && <p class="hook">{hook}</p>}
@@ -43,9 +46,13 @@ const isPreprint = /preprint|under review|submitted/i.test(venue);
   <div class="paper-meta">
     <span class={isPreprint ? "venue" : "venue venue-accepted"}>{venue}</span>
     <div class="paper-links">
-      <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">arXiv</a>
-      <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">PDF</a>
-      {Object.entries(links).map(([label, url]) => (
+      {arxiv && (
+        <>
+          <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">arXiv</a>
+          <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">PDF</a>
+        </>
+      )}
+      {linkEntries.map(([label, url]) => (
         <a href={url} target="_blank" rel="noopener noreferrer" class="link-pill">{label}</a>
       ))}
     </div>
