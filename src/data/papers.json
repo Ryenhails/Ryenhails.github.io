@@ -90,6 +90,18 @@
     }
   },
   {
+    "id": "mv-inversion",
+    "title": "Inverting Multi-Vector Visual Document Indices",
+    "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2610.09920",
+    "hook": "A multi-vector index can be inverted back into readable pages. Shuffling the vectors does not stop it, but pooled indices stay substantially harder to invert.",
+    "topic": "privacy",
+    "role": "first",
+    "links": {}
+  },
+  {
     "id": "etextile",
     "title": "Exploring Human-AI Collaboration in E-Textile Design: A Case Study on Flex Sensor Placement for Shoulder Motion Detection",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yalan He", "Hilla Paasio", "Changyi Li", "Guna Semjonova", "Yu Xiao"],
