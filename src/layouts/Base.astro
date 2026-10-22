@@ -66,6 +66,13 @@ const ogImage = `${site}/images/photo.jpg`;
     --tag-bg: #f5f5f4;
     --tag-first: #dbeafe;
     --tag-first-text: #1e40af;
+    /* Aalto brand (brand.aalto.fi): colour is used as a block with black type */
+    --aalto-violet: #A987FF;   /* School of Electrical Engineering signature */
+    --aalto-yellow: #F7E159;
+    --aalto-red: #FD6360;
+    --aalto-blue: #46A5FF;
+    --on-brand: #000000;       /* brand rule: black type on brand colours */
+
     --radius: 12px;
     --max-width: 720px;
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -113,7 +120,7 @@ const ogImage = `${site}/images/photo.jpg`;
   }
 
   ::selection {
-    background: var(--tag-first);
-    color: var(--tag-first-text);
+    background: var(--aalto-yellow);
+    color: var(--on-brand);
   }
 </style>
