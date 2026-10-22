@@ -1,6 +1,9 @@
-// oneko.js — a cat that chases the cursor.
+// oneko.js — a cat that walks to wherever you click.
 // Vendored from https://github.com/adryd325/oneko.js (public domain).
 // Sprite path is passed via the script tag's data-cat attribute; see Base.astro.
+// Local change: upstream chases the cursor on every mousemove, which keeps
+// something moving in the corner of the eye the whole time you are reading.
+// Here the cat sits still and only sets off when you deliberately click.
 
 (function oneko() {
   const isReducedMotion =
@@ -116,6 +119,11 @@
       }
     }
 
+    // Target the cat's own position, so a fresh load (or a restored one) sits
+    // perfectly still until the first click.
+    mousePosX = nekoPosX;
+    mousePosY = nekoPosY;
+
     nekoEl.id = "oneko";
     nekoEl.ariaHidden = true;
     nekoEl.style.width = "32px";
@@ -131,7 +139,17 @@
 
     document.body.appendChild(nekoEl);
 
-    document.addEventListener("mousemove", function (event) {
+    document.addEventListener("click", function (event) {
+      // leave real interactions alone: clicking a paper title should open the
+      // paper, not send the cat running across the page on the way out
+      const target = event.target;
+      if (
+        target &&
+        typeof target.closest === "function" &&
+        target.closest("a, button, summary, input, textarea, select, label")
+      ) {
+        return;
+      }
       mousePosX = event.clientX;
       mousePosY = event.clientY;
     });
