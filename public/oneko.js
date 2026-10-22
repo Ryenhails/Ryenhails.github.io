@@ -3,7 +3,8 @@
 // Sprite path is passed via the script tag's data-cat attribute; see Base.astro.
 // Local change: upstream chases the cursor on every mousemove, which keeps
 // something moving in the corner of the eye the whole time you are reading.
-// Here the cat sits still and only sets off when you deliberately click.
+// Here the cat sits still and only sets off when you deliberately click,
+// chasing a laser dot that it pounces on when it catches up.
 
 (function oneko() {
   const isReducedMotion =
@@ -13,6 +14,8 @@
   if (isReducedMotion) return;
 
   const nekoEl = document.createElement("div");
+  const toyEl = document.createElement("div");
+  let toyLitAt = 0;
   let persistPosition = true;
 
   let nekoPosX = 32;
@@ -90,6 +93,69 @@
     ],
   };
 
+  const toyStyles = `
+    #oneko-toy {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      margin: -5px 0 0 -5px;
+      border-radius: 50%;
+      background: var(--toy, #FD6360);
+      box-shadow: 0 0 8px var(--toy, #FD6360);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 2147483646;
+    }
+    #oneko-toy.lit {
+      opacity: 1;
+      animation: oneko-toy-pulse 0.9s ease-in-out infinite;
+    }
+    #oneko-toy.lit::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid var(--toy, #FD6360);
+      animation: oneko-toy-ring 0.5s ease-out forwards;
+    }
+    #oneko-toy.caught {
+      opacity: 1;
+      animation: oneko-toy-caught 0.22s ease-in forwards;
+    }
+    @keyframes oneko-toy-ring {
+      from { transform: scale(0.4); opacity: 0.85; }
+      to   { transform: scale(3.2); opacity: 0; }
+    }
+    @keyframes oneko-toy-pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(0.7); }
+    }
+    @keyframes oneko-toy-caught {
+      to { transform: scale(0); opacity: 0; }
+    }
+  `;
+
+  function litToy(x, y) {
+    toyEl.style.left = `${x}px`;
+    toyEl.style.top = `${y}px`;
+    // restart the ring even if the dot is already lit
+    toyEl.classList.remove("lit", "caught");
+    void toyEl.offsetWidth;
+    toyEl.classList.add("lit");
+    toyLitAt = Date.now();
+  }
+
+  function catchToy() {
+    if (!toyEl.classList.contains("lit")) return;
+    // let the dot live long enough to be seen when you click right next to the cat
+    if (Date.now() - toyLitAt < 320) return;
+    toyEl.classList.remove("lit");
+    toyEl.classList.add("caught");
+    // bat at it for a moment
+    idleAnimation = "scratchSelf";
+    idleAnimationFrame = 0;
+  }
+
   function init() {
     let nekoFile = "./oneko.gif";
     const curScript = document.currentScript;
@@ -139,6 +205,14 @@
 
     document.body.appendChild(nekoEl);
 
+    const styleEl = document.createElement("style");
+    styleEl.textContent = toyStyles;
+    document.head.appendChild(styleEl);
+
+    toyEl.id = "oneko-toy";
+    toyEl.ariaHidden = true;
+    document.body.appendChild(toyEl);
+
     document.addEventListener("click", function (event) {
       // leave real interactions alone: clicking a paper title should open the
       // paper, not send the cat running across the page on the way out
@@ -150,8 +224,14 @@
       ) {
         return;
       }
+      // dragging across text to copy it is not a summons
+      const selection = window.getSelection();
+      if (selection && String(selection).length > 0) {
+        return;
+      }
       mousePosX = event.clientX;
       mousePosY = event.clientY;
+      litToy(mousePosX, mousePosY);
     });
 
     if (persistPosition) {
@@ -266,6 +346,7 @@
     const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
     if (distance < nekoSpeed || distance < 48) {
+      catchToy();
       idle();
       return;
     }
