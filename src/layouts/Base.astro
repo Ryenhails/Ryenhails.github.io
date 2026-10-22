@@ -22,8 +22,8 @@ const ogImage = `${site}/images/photo.jpg`;
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0f0f0e" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d0d0e" media="(prefers-color-scheme: dark)" />
 
   <meta property="og:type" content="profile" />
   <meta property="og:title" content={title} />
@@ -37,7 +37,7 @@ const ogImage = `${site}/images/photo.jpg`;
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
   <slot />
@@ -54,51 +54,48 @@ const ogImage = `${site}/images/photo.jpg`;
     box-sizing: border-box;
   }
 
+  /* Aalto Block: colour appears as a filled field, type is black or white,
+     dividing is done by hard rules. Nothing is rounded. */
   :root {
-    --bg: #fafaf9;
-    --bg-card: #ffffff;
-    --text: #1c1917;
-    --text-secondary: #57534e;
-    --text-tertiary: #a8a29e;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --border: #e7e5e4;
-    --tag-bg: #f5f5f4;
-    --tag-first: #dbeafe;
-    --tag-first-text: #1e40af;
-    /* Aalto brand (brand.aalto.fi): colour is used as a block with black type */
-    --aalto-violet: #A987FF;   /* School of Electrical Engineering signature */
-    --aalto-yellow: #F7E159;
-    --aalto-red: #FD6360;
-    --aalto-blue: #46A5FF;
-    --on-brand: #000000;       /* brand rule: black type on brand colours */
+    --page:        #ffffff;
+    --ink:         #0a0a0a;
+    --ink-2:       #4a4a4a;
+    --ink-3:       #8a8a8a;
+    --rule:        #e2e2e0;
+    --rule-strong: #0a0a0a;
+    --surface:     #f6f6f4;
 
-    --radius: 12px;
-    --max-width: 720px;
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    /* Aalto ELEC. The dark school value fills with white type on light ground;
+       the light value takes over in dark mode, where the dark one would vanish. */
+    --brand:    #392d56;   /* aalto-base-color__school--elec2 */
+    --on-brand: #ffffff;
+    --yellow:   #F7E159;
+
+    --max-width: 820px;
+    --gutter: 62px;        /* year / date column, shared by papers and news */
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0f0f0e;
-      --bg-card: #1a1917;
-      --text: #f5f5f4;
-      --text-secondary: #b3aca5;
-      --text-tertiary: #7d756d;
-      --accent: #7cb0f5;
-      --accent-hover: #a8cbff;
-      --border: #2b2724;
-      --tag-bg: #232020;
-      --tag-first: #1e3557;
-      --tag-first-text: #bfdbfe;
+      --page:        #0d0d0e;
+      --ink:         #f3f3f1;
+      --ink-2:       #b0b0ad;
+      --ink-3:       #76767a;
+      --rule:        #2a2a2c;
+      --rule-strong: #f3f3f1;
+      --surface:     #171719;
+      --brand:       #A987FF;
+      --on-brand:    #000000;
+      color-scheme: dark;
     }
   }
 
   html {
     font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
+    background: var(--page);
+    color: var(--ink);
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -108,19 +105,54 @@ const ogImage = `${site}/images/photo.jpg`;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 4rem 1.5rem 6rem;
+    background: var(--page);
   }
 
   a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.15s;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 2px;
+    transition: color 0.15s, text-decoration-color 0.15s;
   }
   a:hover {
-    color: var(--accent-hover);
+    color: var(--brand);
+    text-decoration-color: currentColor;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
   }
 
   ::selection {
-    background: var(--aalto-yellow);
+    background: var(--yellow);
+    color: #000000;
+  }
+
+  /* ---- shared section furniture ---- */
+  .section-label {
+    display: inline-block;
+    background: var(--brand);
     color: var(--on-brand);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    padding: 4px 10px;
+  }
+
+  .section-rule {
+    border-top: 2px solid var(--rule-strong);
+  }
+
+  @media (max-width: 560px) {
+    body {
+      padding: 2.5rem 1.15rem 4.5rem;
+    }
+    /* a ragged inline block looks broken once a long label wraps,
+       so it becomes a full-width band instead */
+    .section-label {
+      display: block;
+    }
   }
 </style>

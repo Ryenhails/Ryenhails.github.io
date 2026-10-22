@@ -3,6 +3,7 @@ interface Props {
   title: string;
   authors: string[];
   venue: string;
+  year?: number | string;
   arxiv?: string;
   hook: string;
   links?: Record<string, string>;
@@ -14,6 +15,7 @@ const {
   title,
   authors,
   venue,
+  year,
   arxiv,
   hook,
   links = {},
@@ -27,152 +29,161 @@ const linkEntries = Object.entries(links);
 const titleHref = arxiv ? `https://arxiv.org/abs/${arxiv}` : (linkEntries[0]?.[1] ?? "#");
 ---
 
-<article class={compact ? "paper-card compact" : "paper-card"}>
-  <h3 class="paper-title">
-    <a href={titleHref} target="_blank" rel="noopener noreferrer">{title}</a>
-  </h3>
+<article class={compact ? "item compact" : "item"}>
+  <div class="year">{year}</div>
+  <div class="body">
+    <h3 class="title">
+      <a href={titleHref} target="_blank" rel="noopener noreferrer">{title}</a>
+    </h3>
 
-  {!compact && <p class="hook">{hook}</p>}
-
-  <p class="authors">
-    {authors.map((author, i) => (
-      <>
-        {i > 0 && ", "}
-        {author === selfName ? <strong>{author}</strong> : <span>{author}</span>}
-      </>
-    ))}
-  </p>
-
-  <div class="paper-meta">
-    <span class={isPreprint ? "venue" : "venue venue-accepted"}>{venue}</span>
-    <div class="paper-links">
-      {arxiv && (
+    <p class="authors">
+      {authors.map((author, i) => (
         <>
-          <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">arXiv</a>
-          <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" rel="noopener noreferrer" class="link-pill">PDF</a>
+          {i > 0 && ", "}
+          {author === selfName ? <b>{author}</b> : <span>{author}</span>}
         </>
-      )}
-      {linkEntries.map(([label, url]) => (
-        <a href={url} target="_blank" rel="noopener noreferrer" class="link-pill">{label}</a>
       ))}
+    </p>
+
+    {!compact && <p class="hook">{hook}</p>}
+
+    <div class="meta">
+      <span class={isPreprint ? "venue preprint" : "venue"}>{venue}</span>
+      <div class="paper-links">
+        {arxiv && (
+          <>
+            <a href={`https://arxiv.org/abs/${arxiv}`} target="_blank" rel="noopener noreferrer" class="lk">arXiv</a>
+            <a href={`https://arxiv.org/pdf/${arxiv}`} target="_blank" rel="noopener noreferrer" class="lk">PDF</a>
+          </>
+        )}
+        {linkEntries.map(([label, url]) => (
+          <a href={url} target="_blank" rel="noopener noreferrer" class="lk">{label}</a>
+        ))}
+      </div>
     </div>
   </div>
 </article>
 
 <style>
-  .paper-card {
-    padding: 1.1rem 1.35rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    transition: box-shadow 0.2s, border-color 0.2s;
+  .item {
+    display: grid;
+    grid-template-columns: var(--gutter) 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
   }
 
-  .paper-card:hover {
-    border-color: var(--text-tertiary);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  .body {
+    min-width: 0;
   }
 
-  /* title is the scan anchor */
-  .paper-title {
-    font-size: 1rem;
+  .year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    padding-top: 3px;
+  }
+
+  /* the scan anchor */
+  .title {
+    font-size: 15.5px;
     font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: -0.01em;
-    margin: 0;
+    letter-spacing: -0.012em;
+    line-height: 1.35;
+    margin: 0 0 4px;
   }
 
-  .paper-title a { color: var(--text); }
-  .paper-title a:hover { color: var(--accent); }
-
-  /* one-line takeaway, subordinate to the title */
-  .hook {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    line-height: 1.55;
-    margin: 0.5rem 0 0.6rem;
-    padding-left: 0.7rem;
-    border-left: 3px solid var(--aalto-violet);
+  .title a {
+    text-decoration: none;
   }
 
   .authors {
-    font-size: 0.83rem;
-    color: var(--text-secondary);
+    font-size: 13px;
+    color: var(--ink-2);
+    margin: 0 0 7px;
     line-height: 1.5;
-    margin: 0.35rem 0 0.5rem;
   }
 
-  .paper-meta {
+  .authors b {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* one-line takeaway, marked by the brand rule rather than by weight */
+  .hook {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0 0 9px;
+    border-left: 3px solid var(--brand);
+    padding-left: 10px;
+  }
+
+  .meta {
     display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
     flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
   }
 
   .venue {
-    font-size: 0.78rem;
-    color: var(--text-tertiary);
-    font-style: italic;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    line-height: 1.45;
+    background: var(--brand);
+    color: var(--on-brand);
+    padding: 3px 7px;
   }
 
-  .venue-accepted {
-    font-style: normal;
-    font-size: 0.74rem;
-    font-weight: 600;
-    color: var(--on-brand);
-    background: var(--aalto-violet);
-    border-radius: 6px;
-    padding: 0.18rem 0.5rem;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+  .venue.preprint {
+    background: transparent;
+    color: var(--ink-3);
+    border: 1px solid var(--rule);
   }
 
   .paper-links {
     display: flex;
-    gap: 0.3rem;
     flex-wrap: wrap;
+    gap: 8px;
   }
 
-  /* quiet by default so 30+ links stop competing with titles */
-  .link-pill {
-    font-size: 0.72rem;
-    padding: 0.16rem 0.45rem;
-    border-radius: 5px;
-    background: var(--tag-bg);
-    color: var(--text-tertiary);
-    border: 1px solid transparent;
-    transition: all 0.15s;
+  .lk {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--ink-2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
     text-transform: capitalize;
   }
 
-  .link-pill:hover {
-    background: var(--aalto-violet);
-    color: var(--on-brand);
-    border-color: var(--aalto-violet);
+  .lk:hover {
+    color: var(--brand);
+    border-color: var(--brand);
   }
 
   /* ---- compact: co-authored / side work ---- */
-  .paper-card.compact {
-    padding: 0.7rem 0;
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--border);
-    border-radius: 0;
+  .item.compact {
+    padding: 12px 0;
   }
 
-  .paper-card.compact:hover {
-    box-shadow: none;
-    border-color: var(--border);
-  }
-
-  .paper-card.compact .paper-title {
-    font-size: 0.92rem;
+  .item.compact .title {
+    font-size: 14px;
     font-weight: 500;
   }
 
-  .paper-card.compact .authors {
-    font-size: 0.78rem;
-    margin: 0.2rem 0 0.35rem;
+  .item.compact .authors {
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 560px) {
+    .item {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .year {
+      display: none;
+    }
   }
 </style>

@@ -30,14 +30,16 @@ const sections = [
 
     {sections.map((section) => (
       <section>
-        <h2 class="section-title">{section.title}</h2>
-        <p class="section-blurb">{section.blurb}</p>
+        <span class="section-label">{section.title}</span>
+        <div class="section-rule"></div>
+        <p class="blurb">{section.blurb}</p>
         <div class="paper-list">
-          {section.papers.map((p) => (
+          {section.papers.map((p, i) => (
             <PaperCard
               title={p.title}
               authors={p.authors}
               venue={p.venue}
+              year={i === 0 || p.year !== section.papers[i - 1].year ? p.year : undefined}
               arxiv={p.arxiv}
               hook={p.hook}
               links={p.links}
@@ -63,46 +65,44 @@ const sections = [
   main {
     display: flex;
     flex-direction: column;
-    gap: 3.25rem;
+    gap: 38px;
   }
 
-  .section-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin-bottom: 0.35rem;
-  }
-
-  .section-blurb {
-    font-size: 0.83rem;
-    color: var(--text-tertiary);
-    line-height: 1.5;
-    margin: 0 0 1rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 3px solid var(--aalto-violet);
-    max-width: 640px;
+  .blurb {
+    font-size: 13.5px;
+    color: var(--ink-3);
+    line-height: 1.55;
+    max-width: 68ch;
+    margin: 12px 0 6px;
   }
 
   .paper-list {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+  }
+
+  /* the last item's rule would double up with nothing below it */
+  .paper-list :global(.item:last-child) {
+    border-bottom: none;
   }
 
   footer {
-    margin-top: 4rem;
-    padding-top: 1.75rem;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 2px solid var(--rule-strong);
+    font-size: 12.5px;
+    color: var(--ink-3);
   }
 
   .funding {
-    max-width: 620px;
-    margin: 0 auto 0.9rem;
-    line-height: 1.55;
-    font-size: 0.78rem;
+    max-width: 68ch;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 560px) {
+    main {
+      gap: 28px;
+    }
   }
 </style>
