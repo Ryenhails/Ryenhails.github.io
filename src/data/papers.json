@@ -90,6 +90,21 @@
     }
   },
   {
+    "id": "rerank-decision",
+    "title": "Multimodal Reranking Is a System One Decision",
+    "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
+    "venue": "Preprint, Position Paper",
+    "year": 2026,
+    "arxiv": "2610.28435",
+    "hook": "Reranking can be one multiple-choice question over all candidates instead of a yes/no score per candidate. On MMEB-V2 that choice alone beats per-candidate scoring.",
+    "topic": "retrieval",
+    "role": "first",
+    "links": {
+      "project": "https://ryenhails.github.io/rerank-as-decision/",
+      "github": "https://github.com/Ryenhails/rerank-as-decision"
+    }
+  },
+  {
     "id": "mv-inversion",
     "title": "Inverting Multi-Vector Visual Document Indices",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
