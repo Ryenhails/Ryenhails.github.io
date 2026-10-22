@@ -5,26 +5,18 @@ import PaperCard from "../components/PaperCard.astro";
 import News from "../components/News.astro";
 import papers from "../data/papers.json";
 
+const byTopic = (t) => papers.filter((p) => p.topic === t);
+
 const sections = [
   {
-    title: "Visual Document Retrieval",
-    blurb: "My thesis line: making vision-language retrieval cheap enough to deploy, through distillation and index compression.",
-    papers: papers.filter((p) => p.topic === "retrieval"),
+    title: "Efficient and Reliable Visual Document Intelligence",
+    blurb: "Making vision-language document retrieval cheap enough to deploy, and asking what those systems ground their answers on and what their indices leak.",
+    papers: [...byTopic("retrieval"), ...byTopic("privacy"), ...byTopic("understanding")],
   },
   {
-    title: "Privacy of Retrieval Indices",
-    blurb: "What a stored retrieval index still reveals about the documents it encodes, and what actually protects it.",
-    papers: papers.filter((p) => p.topic === "privacy"),
-  },
-  {
-    title: "Visual Document Understanding",
-    blurb: "What a vision-language model actually reads from a page, and whether it can point to the evidence.",
-    papers: papers.filter((p) => p.topic === "understanding"),
-  },
-  {
-    title: "Smart Wearable & Motion Understanding",
-    blurb: "Work on e-textile design, wearable sensing and human motion, mostly with collaborators.",
-    papers: papers.filter((p) => p.topic === "motion"),
+    title: "Other multimodal information understanding",
+    blurb: "E-textile design, wearable sensing and human motion, mostly with collaborators.",
+    papers: byTopic("motion"),
   },
 ];
 ---
