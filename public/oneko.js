@@ -4,7 +4,8 @@
 // Local change: upstream chases the cursor on every mousemove, which keeps
 // something moving in the corner of the eye the whole time you are reading.
 // Here the cat sits still and only sets off when you deliberately click,
-// chasing a laser dot that it pounces on when it catches up.
+// chasing a laser dot that it pounces on when it catches up. It is placed in
+// document coordinates, so it stands on the page and scrolls with it.
 
 (function oneko() {
   const isReducedMotion =
@@ -95,7 +96,7 @@
 
   const toyStyles = `
     #oneko-toy {
-      position: fixed;
+      position: absolute;
       width: 10px;
       height: 10px;
       margin: -5px 0 0 -5px;
@@ -135,9 +136,36 @@
     }
   `;
 
+  function pageBounds() {
+    const root = document.documentElement;
+    return {
+      width: Math.max(root.scrollWidth, root.clientWidth),
+      height: Math.max(root.scrollHeight, root.clientHeight),
+    };
+  }
+
+  function renderNeko() {
+    nekoEl.style.left = `${nekoPosX - 16}px`;
+    nekoEl.style.top = `${nekoPosY - 16}px`;
+  }
+
+  // If the cat is parked somewhere you have since scrolled away from, let it
+  // come running in from the nearest edge instead of trudging the whole page.
+  function recallIntoView() {
+    const margin = 40;
+    const minX = window.scrollX - margin;
+    const maxX = window.scrollX + window.innerWidth + margin;
+    const minY = window.scrollY - margin;
+    const maxY = window.scrollY + window.innerHeight + margin;
+    nekoPosX = Math.min(Math.max(nekoPosX, minX), maxX);
+    nekoPosY = Math.min(Math.max(nekoPosY, minY), maxY);
+  }
+
   function litToy(x, y) {
-    toyEl.style.left = `${x}px`;
-    toyEl.style.top = `${y}px`;
+    // keep the dot inside the page so it can never add a scrollbar
+    const page = pageBounds();
+    toyEl.style.left = `${Math.min(Math.max(x, 6), page.width - 6)}px`;
+    toyEl.style.top = `${Math.min(Math.max(y, 6), page.height - 6)}px`;
     // restart the ring even if the dot is already lit
     toyEl.classList.remove("lit", "caught");
     void toyEl.offsetWidth;
@@ -194,12 +222,11 @@
     nekoEl.ariaHidden = true;
     nekoEl.style.width = "32px";
     nekoEl.style.height = "32px";
-    nekoEl.style.position = "fixed";
+    nekoEl.style.position = "absolute";
     nekoEl.style.pointerEvents = "none";
     nekoEl.style.imageRendering = "pixelated";
-    nekoEl.style.left = `${nekoPosX - 16}px`;
-    nekoEl.style.top = `${nekoPosY - 16}px`;
     nekoEl.style.zIndex = 2147483647;
+    renderNeko();
 
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
@@ -229,8 +256,10 @@
       if (selection && String(selection).length > 0) {
         return;
       }
-      mousePosX = event.clientX;
-      mousePosY = event.clientY;
+      mousePosX = event.pageX;
+      mousePosY = event.pageY;
+      recallIntoView();
+      renderNeko();
       litToy(mousePosX, mousePosY);
     });
 
@@ -293,16 +322,17 @@
       idleAnimation == null
     ) {
       let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
+      const page = pageBounds();
       if (nekoPosX < 32) {
         avalibleIdleAnimations.push("scratchWallW");
       }
       if (nekoPosY < 32) {
         avalibleIdleAnimations.push("scratchWallN");
       }
-      if (nekoPosX > window.innerWidth - 32) {
+      if (nekoPosX > page.width - 32) {
         avalibleIdleAnimations.push("scratchWallE");
       }
-      if (nekoPosY > window.innerHeight - 32) {
+      if (nekoPosY > page.height - 32) {
         avalibleIdleAnimations.push("scratchWallS");
       }
       idleAnimation =
@@ -372,11 +402,11 @@
     nekoPosX -= (diffX / distance) * nekoSpeed;
     nekoPosY -= (diffY / distance) * nekoSpeed;
 
-    nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
-    nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
+    const page = pageBounds();
+    nekoPosX = Math.min(Math.max(16, nekoPosX), page.width - 16);
+    nekoPosY = Math.min(Math.max(16, nekoPosY), page.height - 16);
 
-    nekoEl.style.left = `${nekoPosX - 16}px`;
-    nekoEl.style.top = `${nekoPosY - 16}px`;
+    renderNeko();
   }
 
   init();
