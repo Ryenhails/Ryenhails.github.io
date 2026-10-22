@@ -17,6 +17,7 @@ const sections = [
     title: "Other multimodal information understanding",
     blurb: "E-textile design, wearable sensing and human motion, mostly with collaborators.",
     papers: byTopic("motion"),
+    compact: true,
   },
 ];
 ---
@@ -40,7 +41,7 @@ const sections = [
               arxiv={p.arxiv}
               hook={p.hook}
               links={p.links}
-              compact={p.role === "second"}
+              compact={section.compact === true || p.role === "second"}
             />
           ))}
         </div>
