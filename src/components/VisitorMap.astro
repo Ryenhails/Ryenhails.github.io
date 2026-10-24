@@ -1,0 +1,157 @@
+---
+import grid from "../data/worldcells.json";
+
+// The deployed Worker URL (see worker/README.md). While this is empty the
+// section is not rendered at all, so the page costs nothing until it is set.
+const ENDPOINT = "";
+---
+
+{ENDPOINT && (
+  <Fragment>
+  <section class="visitors" data-endpoint={ENDPOINT} hidden>
+    <span class="section-label">Visitors</span>
+    <div class="section-rule"></div>
+    <svg
+      class="map"
+      viewBox={`0 0 ${grid.cols} ${grid.rows}`}
+      shape-rendering="crispEdges"
+      role="img"
+      aria-label="World map of the countries this page has been visited from"
+    >
+      <path class="land" d={grid.land} />
+      <g class="marks"></g>
+    </svg>
+    <p class="readout"></p>
+  </section>
+
+  <script define:vars={{ cells: grid.cells, names: grid.names, dot: grid.dot }}>
+    (function () {
+      const el = document.querySelector(".visitors");
+      if (!el) return;
+
+      const SVGNS = "http://www.w3.org/2000/svg";
+      const marks = el.querySelector(".marks");
+      const map = el.querySelector(".map");
+      const readout = el.querySelector(".readout");
+
+      // Three fixed steps, measured against the busiest country rather than
+      // against absolute numbers, so the map reads the same on day one as it
+      // does at ten thousand visits.
+      function step(n, max) {
+        const f = n / max;
+        if (f >= 0.33) return { s: 0.96, cls: "mk t3" };
+        if (f >= 0.08) return { s: 0.72, cls: "mk t2" };
+        return { s: dot, cls: "mk t1" };
+      }
+
+      function num(n) {
+        return Number(n).toLocaleString("en-US");
+      }
+
+      fetch(el.dataset.endpoint, { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((data) => {
+          const entries = Object.entries(data.countries || {})
+            .filter(([iso]) => cells[iso])
+            .sort((a, b) => b[1] - a[1]);
+          if (!entries.length) return;
+
+          const max = entries[0][1];
+          for (const [iso, n] of entries) {
+            const cell = cells[iso];
+            const { s, cls } = step(n, max);
+            const rect = document.createElementNS(SVGNS, "rect");
+            rect.setAttribute("x", (cell[0] + (1 - s) / 2).toFixed(2));
+            rect.setAttribute("y", (cell[1] + (1 - s) / 2).toFixed(2));
+            rect.setAttribute("width", s);
+            rect.setAttribute("height", s);
+            rect.setAttribute("class", cls);
+            rect.dataset.iso = iso;
+            rect.dataset.n = n;
+            rect.dataset.name = names[iso] || iso;
+            const title = document.createElementNS(SVGNS, "title");
+            title.textContent = (names[iso] || iso) + " — " + num(n);
+            rect.appendChild(title);
+            marks.appendChild(rect);
+          }
+
+          const top = entries
+            .slice(0, 8)
+            .map(([iso, n]) => iso + " " + num(n))
+            .join("  ·  ");
+          const summary =
+            "<b>" + num(data.total) + "</b> visits from <b>" + entries.length +
+            "</b> countries  ·  <span class='strip'>" + top + "</span>";
+          readout.innerHTML = summary;
+          el.hidden = false;
+
+          map.addEventListener("mouseover", (e) => {
+            const m = e.target.closest(".mk");
+            if (!m) return;
+            readout.textContent =
+              m.dataset.name + "  " + m.dataset.iso + "  " + num(m.dataset.n) + " visits";
+          });
+          map.addEventListener("mouseleave", () => {
+            readout.innerHTML = summary;
+          });
+        })
+        .catch(() => {
+          // no counter, no section; the page is unchanged
+        });
+    })();
+  </script>
+  </Fragment>
+)}
+
+<style>
+  .map {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 16px 0 0;
+  }
+
+  .map :global(.land) {
+    fill: var(--land);
+  }
+
+  /* markers are never smaller than a land dot, so they always cover the dot
+     they sit on and the matrix stays regular */
+  .map :global(.mk) {
+    fill: var(--brand);
+  }
+  .map :global(.t1) {
+    fill-opacity: 0.55;
+  }
+  .map :global(.t2) {
+    fill-opacity: 0.78;
+  }
+  .map :global(.mk:hover) {
+    fill: var(--toy);
+    fill-opacity: 1;
+  }
+
+  .readout {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+    margin-top: 12px;
+    padding-top: 9px;
+    border-top: 1px solid var(--rule);
+    min-height: 2.8em;
+  }
+
+  .readout :global(b) {
+    color: var(--ink);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 560px) {
+    .readout {
+      min-height: 4.4em;
+    }
+  }
+</style>

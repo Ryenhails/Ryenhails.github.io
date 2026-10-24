@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import PaperCard from "../components/PaperCard.astro";
 import News from "../components/News.astro";
+import VisitorMap from "../components/VisitorMap.astro";
 import papers from "../data/papers.json";
 
 const byTopic = (t) => papers.filter((p) => p.topic === t);
@@ -49,6 +50,8 @@ const sections = [
         </div>
       </section>
     ))}
+
+    <VisitorMap />
   </main>
 
   <footer>
