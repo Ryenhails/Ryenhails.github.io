@@ -25,8 +25,13 @@ const {
 
 const isPreprint = /preprint|under review|submitted/i.test(venue);
 const linkEntries = Object.entries(links);
-// papers without an arXiv id (e.g. ACM-only) fall back to their first external link
-const titleHref = arxiv ? `https://arxiv.org/abs/${arxiv}` : (linkEntries[0]?.[1] ?? "#");
+// once a paper is published the proceedings page is the version of record;
+// otherwise arXiv, and failing that whatever external link exists
+const titleHref =
+  links.acl ?? (arxiv ? `https://arxiv.org/abs/${arxiv}` : (linkEntries[0]?.[1] ?? "#"));
+
+// link keys are shown capitalised, which would turn "acl" into "Acl"
+const LABELS = { acl: "ACL Anthology" };
 ---
 
 <article class={compact ? "item compact" : "item"}>
@@ -57,7 +62,7 @@ const titleHref = arxiv ? `https://arxiv.org/abs/${arxiv}` : (linkEntries[0]?.[1
           </>
         )}
         {linkEntries.map(([label, url]) => (
-          <a href={url} target="_blank" rel="noopener noreferrer" class="lk">{label}</a>
+          <a href={url} target="_blank" rel="noopener noreferrer" class="lk">{LABELS[label] ?? label}</a>
         ))}
       </div>
     </div>

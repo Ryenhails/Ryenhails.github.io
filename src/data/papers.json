@@ -40,6 +40,7 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "acl": "https://aclanthology.org/2026.emnlp-main.71/",
       "github": "https://github.com/Ryenhails/NanoVDR",
       "huggingface": "https://huggingface.co/nanovdr"
     }
@@ -71,6 +72,7 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "acl": "https://aclanthology.org/2026.docinsights-1.26/",
       "github": "https://github.com/Ryenhails/NanoVDR",
       "huggingface": "https://huggingface.co/nanovdr"
     }
@@ -86,6 +88,7 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "acl": "https://aclanthology.org/2026.emnlp-main.216/",
       "github": "https://github.com/Ryenhails/structural-anchor-pruning"
     }
   },
