@@ -40,6 +40,7 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "project": "https://ryenhails.github.io/NanoVDR/",
       "acl": "https://aclanthology.org/2026.emnlp-main.71/",
       "github": "https://github.com/Ryenhails/NanoVDR",
       "huggingface": "https://huggingface.co/nanovdr"
@@ -56,6 +57,7 @@
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "project": "https://ryenhails.github.io/NanoVDR/",
       "github": "https://github.com/Ryenhails/NanoVDR",
       "demo": "https://huggingface.co/spaces/nanovdr/NanoVDR-Demo",
       "model": "https://huggingface.co/nanovdr"
@@ -68,10 +70,11 @@
     "venue": "Workshop on Document Intelligence and Understanding (DocInsights) at EMNLP 2026",
     "year": 2026,
     "arxiv": "2608.10636",
-    "hook": "NanoVDR shrank only the query encoder. DistilVDR distills the whole retriever end-to-end from a single 8B teacher, keeping most of its quality at 524M with a 15x smaller index.",
+    "hook": "NanoVDR shrank only the query encoder. DistilVDR distills the whole retriever end-to-end from a single 8B teacher, keeping most of its quality at 527M with a 15x smaller index.",
     "topic": "retrieval",
     "role": "first",
     "links": {
+      "project": "https://ryenhails.github.io/NanoVDR/",
       "acl": "https://aclanthology.org/2026.docinsights-1.26/",
       "github": "https://github.com/Ryenhails/NanoVDR",
       "huggingface": "https://huggingface.co/nanovdr"
