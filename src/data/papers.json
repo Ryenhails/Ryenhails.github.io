@@ -3,7 +3,7 @@
     "id": "evidence-attribution",
     "title": "Evidence Attribution in Visual Document Understanding without Coordinates or Region Labels",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yu Xiao"],
-    "venue": "Preprint, Under Review",
+    "venue": "20th Conference of the European Chapter of the Association for Computational Linguistics (EACL) 2027, Main Conference",
     "year": 2026,
     "arxiv": "2607.24651",
     "hook": "With a language-cue interface, we find the grounding bottleneck is the coordinate output, not the model's ability to locate the evidence.",

@@ -1,5 +1,12 @@
 ---
+// `pinned` marks a main-conference acceptance. Those stay visible at the top;
+// everything else (workshops, preprints, talks, visits) folds away below.
 const news = [
+  {
+    date: "Nov 2026",
+    pinned: true,
+    text: '<a href="https://arxiv.org/abs/2607.24651" target="_blank" rel="noopener noreferrer">Evidence Attribution</a> is accepted to <strong>EACL 2027</strong> (Main). See you in Athens!',
+  },
   {
     date: "Oct 2026",
     text: '<strong>VisAgentRet</strong>, our OCR-free agentic document retrieval system (EVIE-4.5B + GLM-5.3-Flash), ranks 1st on the <a href="https://huggingface.co/spaces/vidore/vidore-leaderboard" target="_blank" rel="noopener noreferrer">ViDoRe v3 leaderboard</a>. <a href="https://huggingface.co/blog/Ryenhails/pure-vision-vidore-v3" target="_blank" rel="noopener noreferrer">Blog post</a> with the ViDoRe team.',
@@ -14,6 +21,7 @@ const news = [
   },
   {
     date: "Aug 2026",
+    pinned: true,
     text: 'Two papers, <a href="https://arxiv.org/abs/2603.12824" target="_blank" rel="noopener noreferrer">NanoVDR</a> and <a href="https://arxiv.org/abs/2601.20107" target="_blank" rel="noopener noreferrer">SAP</a>, are accepted to <strong>EMNLP 2026</strong> (Main). See you in Budapest!',
   },
   {
@@ -42,9 +50,8 @@ const news = [
   },
 ];
 
-const RECENT = 4;
-const recent = news.slice(0, RECENT);
-const older = news.slice(RECENT);
+const recent = news.filter((item) => item.pinned);
+const older = news.filter((item) => !item.pinned);
 ---
 
 <section>
@@ -60,7 +67,7 @@ const older = news.slice(RECENT);
   </ul>
   {older.length > 0 && (
     <details class="older-news">
-      <summary>Earlier news ({older.length})</summary>
+      <summary>Other news ({older.length})</summary>
       <ul class="news-list">
         {older.map((item) => (
           <li class="news-item">
