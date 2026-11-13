@@ -1,6 +1,6 @@
 # homepage-visitors
 
-Counts page visits per country for the homepage. Stores one integer per country
+Counts page visits per country or region for the homepage. Stores one integer per country or region
 and nothing else, so there is no personal data at rest and nothing to disclose.
 
 ## Deploy
@@ -20,7 +20,7 @@ Cloudflare; the Worker lives on its own `workers.dev` address.
 
     GET /  ->  { "total": 4218, "countries": { "FI": 982, ... }, "you": "FI" }
 
-Each GET records one visit from the caller's country, then returns the totals.
+Each GET records one visit from the caller's country or region, then returns the totals.
 
 ## Cost
 

@@ -16,7 +16,7 @@ const ENDPOINT = "https://homepage-visitors.214484506.workers.dev/";
       viewBox={`0 0 ${grid.cols} ${grid.rows}`}
       shape-rendering="crispEdges"
       role="img"
-      aria-label="World map of the countries this page has been visited from"
+      aria-label="World map of the countries and regions this page has been visited from"
     >
       <path class="land" d={grid.land} />
       <g class="marks"></g>
@@ -81,7 +81,7 @@ const ENDPOINT = "https://homepage-visitors.214484506.workers.dev/";
             .join("  ·  ");
           const summary =
             "<b>" + num(data.total) + "</b> visits from <b>" + entries.length +
-            "</b> countries  ·  <span class='strip'>" + top + "</span>";
+            "</b> countries and regions  ·  <span class='strip'>" + top + "</span>";
           readout.innerHTML = summary;
           el.hidden = false;
 
