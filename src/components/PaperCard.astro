@@ -7,6 +7,7 @@ interface Props {
   arxiv?: string;
   hook: string;
   links?: Record<string, string>;
+  equal?: string[];
   selfName?: string;
   compact?: boolean;
 }
@@ -19,6 +20,7 @@ const {
   arxiv,
   hook,
   links = {},
+  equal = [],
   selfName = "Zhuchenyang Liu",
   compact = false,
 } = Astro.props;
@@ -46,8 +48,10 @@ const LABELS = { acl: "ACL Anthology" };
         <>
           {i > 0 && ", "}
           {author === selfName ? <b>{author}</b> : <span>{author}</span>}
+          {equal.includes(author) && <sup>*</sup>}
         </>
       ))}
+      {equal.length > 0 && <span class="equal">(* equal contribution)</span>}
     </p>
 
     {!compact && <p class="hook">{hook}</p>}
@@ -107,6 +111,15 @@ const LABELS = { acl: "ACL Anthology" };
     color: var(--ink-2);
     margin: 0 0 7px;
     line-height: 1.5;
+  }
+
+  .authors .equal {
+    color: var(--ink-3);
+    margin-left: 6px;
+  }
+
+  .authors sup {
+    line-height: 0;
   }
 
   .authors b {

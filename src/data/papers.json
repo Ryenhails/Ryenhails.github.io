@@ -123,6 +123,23 @@
     "links": {}
   },
   {
+    "id": "inhabitant",
+    "title": "Inhabitant: An Agent Framework for Long-Horizon Human-Scene Interaction with Spatial Control and Quantitative Feedback",
+    "authors": ["Yao Zhang", "Zhuchenyang Liu", "Yu Xiao"],
+    "equal": ["Yao Zhang", "Zhuchenyang Liu"],
+    "venue": "Preprint, Under Review",
+    "year": 2026,
+    "arxiv": "2611.25005",
+    "hook": "An agent finishes long household tasks once it can say where the body should go and measure how far the motion missed.",
+    "topic": "motion",
+    "role": "co-first",
+    "links": {
+      "project": "https://ryenhails.github.io/Inhabitant/",
+      "github": "https://github.com/yaozhang182/inhabitant",
+      "data": "https://huggingface.co/datasets/zyyy12138/Inhabit"
+    }
+  },
+  {
     "id": "etextile",
     "title": "Exploring Human-AI Collaboration in E-Textile Design: A Case Study on Flex Sensor Placement for Shoulder Motion Detection",
     "authors": ["Zhuchenyang Liu", "Yao Zhang", "Yalan He", "Hilla Paasio", "Changyi Li", "Guna Semjonova", "Yu Xiao"],
